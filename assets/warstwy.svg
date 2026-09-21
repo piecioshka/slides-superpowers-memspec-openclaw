@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" role="img" aria-label="Trzy warstwy: OpenClaw jako transport, Superpowers jako proces, memspec jako pamiec">
+  <style>
+    .lbl { font: 600 17px Inter, system-ui, sans-serif; fill: var(--fg); }
+    .sub { font: 400 13px Inter, system-ui, sans-serif; fill: var(--fg-dim); }
+    .tag { font: 700 12px "JetBrains Mono", monospace; fill: var(--on-accent); }
+    .q   { font: italic 400 13px Inter, system-ui, sans-serif; fill: var(--accent-soft); }
+  </style>
+
+  <!-- OpenClaw: transport -->
+  <rect x="20" y="20" width="860" height="80" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+  <rect x="38" y="36" width="86" height="22" rx="11" fill="var(--accent)"/>
+  <text x="81" y="51" class="tag" text-anchor="middle">OpenClaw</text>
+  <text x="140" y="52" class="lbl">Skąd przychodzi zadanie</text>
+  <text x="140" y="76" class="sub">Slack · Telegram · Discord · iMessage · aplikacja mobilna · CLI</text>
+  <text x="820" y="52" class="q" text-anchor="end">transport</text>
+
+  <path d="M450 100 L450 128" stroke="var(--accent)" stroke-width="2"/>
+  <path d="M444 122 L450 132 L456 122 Z" fill="var(--accent)"/>
+
+  <!-- Claude Code -->
+  <rect x="20" y="132" width="860" height="186" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+  <text x="44" y="160" class="lbl">Claude Code</text>
+  <text x="820" y="160" class="q" text-anchor="end">runtime agenta</text>
+
+  <!-- Superpowers -->
+  <rect x="44" y="180" width="396" height="116" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <rect x="62" y="196" width="112" height="22" rx="11" fill="var(--accent)"/>
+  <text x="118" y="211" class="tag" text-anchor="middle">Superpowers</text>
+  <text x="62" y="244" class="lbl">Jak agent ma pracować</text>
+  <text x="62" y="268" class="sub">14 skilli · hook SessionStart</text>
+  <text x="62" y="286" class="sub">brainstorm → plan → TDD → review</text>
+
+  <!-- memspec -->
+  <rect x="460" y="180" width="396" height="116" rx="8" fill="var(--bg)" stroke="var(--accent-soft)" stroke-width="1.5"/>
+  <rect x="478" y="196" width="86" height="22" rx="11" fill="var(--accent-soft)"/>
+  <text x="521" y="211" class="tag" text-anchor="middle">memspec</text>
+  <text x="478" y="244" class="lbl">Co agent ma pamiętać</text>
+  <text x="478" y="268" class="sub">fakty · decyzje · procedury</text>
+  <text x="478" y="286" class="sub">TTL · kotwice SHA · cykl życia</text>
+</svg>

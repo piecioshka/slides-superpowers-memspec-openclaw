@@ -1,0 +1,13 @@
+{
+  "name": "slides-superpowers-memspec-openclaw",
+  "version": "0.1.0",
+  "description": "Slajdy o Superpowers, memspec i OpenClaw",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve . --listen 4321",
+    "pdf": "npx --yes decktape@3 remark --chrome-arg=--allow-file-access-from-files index.html slides.pdf",
+    "format": "npx --yes prettier --write .",
+    "format:check": "npx --yes prettier --check ."
+  },
+  "license": "MIT"
+}

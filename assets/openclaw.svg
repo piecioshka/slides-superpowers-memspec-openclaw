@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="Architektura OpenClaw: kanaly czatowe, gateway jako plan kontroli, agenci i nody">
+  <style>
+    .ch   { font: 400 12.5px Inter, system-ui, sans-serif; fill: var(--fg); }
+    .hl   { font: 700 16px Inter, system-ui, sans-serif; fill: var(--on-accent); }
+    .note { font: 400 12px Inter, system-ui, sans-serif; fill: var(--fg-dim); }
+    .cap  { font: 600 13px Inter, system-ui, sans-serif; fill: var(--accent-soft); }
+    .code { font: 400 12px "JetBrains Mono", monospace; fill: var(--accent-soft); }
+  </style>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- kanaly -->
+  <text x="450" y="22" class="cap" text-anchor="middle">20+ kanałów</text>
+  <g>
+    <rect x="60" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="112" y="56" class="ch" text-anchor="middle">Slack</text>
+    <rect x="182" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="234" y="56" class="ch" text-anchor="middle">Discord</text>
+    <rect x="304" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="356" y="56" class="ch" text-anchor="middle">Telegram</text>
+    <rect x="426" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="478" y="56" class="ch" text-anchor="middle">WhatsApp</text>
+    <rect x="548" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="600" y="56" class="ch" text-anchor="middle">iMessage</text>
+    <rect x="670" y="34" width="104" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+    <text x="722" y="56" class="ch" text-anchor="middle">Teams</text>
+  </g>
+
+  <g stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.8">
+    <path d="M112 68 L400 116"/>
+    <path d="M234 68 L420 116"/>
+    <path d="M356 68 L440 116"/>
+    <path d="M478 68 L460 116"/>
+    <path d="M600 68 L480 116"/>
+    <path d="M722 68 L500 116"/>
+  </g>
+
+  <!-- gateway -->
+  <rect x="245" y="122" width="410" height="76" rx="12" fill="var(--accent)"/>
+  <text x="450" y="152" class="hl" text-anchor="middle">GATEWAY</text>
+  <text x="450" y="176" style="font: 400 12.5px Inter, sans-serif; fill: var(--on-accent);" text-anchor="middle">jedyne źródło prawdy o sesjach i routingu</text>
+
+  <text x="672" y="150" class="code">~/.openclaw/openclaw.json</text>
+  <text x="672" y="170" class="note">konfiguracja lokalnie</text>
+
+  <path d="M330 198 L280 236" stroke="var(--accent)" stroke-width="2" marker-end="url(#d)"/>
+  <path d="M450 198 L450 236" stroke="var(--accent)" stroke-width="2" marker-end="url(#d)"/>
+  <path d="M570 198 L620 236" stroke="var(--accent)" stroke-width="2" marker-end="url(#d)"/>
+
+  <!-- wyjscia -->
+  <rect x="150" y="242" width="200" height="62" rx="8" fill="var(--bg)" stroke="var(--line)"/>
+  <text x="250" y="266" class="ch" text-anchor="middle">Control UI · CLI · TUI</text>
+  <text x="250" y="288" class="note" text-anchor="middle">sterowanie</text>
+
+  <rect x="368" y="242" width="164" height="62" rx="8" fill="var(--bg)" stroke="var(--accent-soft)" stroke-width="1.5"/>
+  <text x="450" y="266" class="ch" text-anchor="middle">agent runtime</text>
+  <text x="450" y="288" class="note" text-anchor="middle">Claude Code, model lokalny</text>
+
+  <rect x="550" y="242" width="200" height="62" rx="8" fill="var(--bg)" stroke="var(--line)"/>
+  <text x="650" y="266" class="ch" text-anchor="middle">nody / aplikacje</text>
+  <text x="650" y="288" class="note" text-anchor="middle">macOS · iOS · Android · Win</text>
+
+  <text x="450" y="336" class="cap" text-anchor="middle">Stan, pamięć i poświadczenia nie opuszczają Twojej maszyny</text>
+</svg>

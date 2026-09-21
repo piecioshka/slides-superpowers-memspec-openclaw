@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-label="Trzy warstwy pamieci: MEMORY.md globalny, MEMORY.md w repo, memory w katalogu projektow Claude Code">
+  <style>
+    .q    { font: 600 14px Inter, system-ui, sans-serif; fill: var(--fg); }
+    .path { font: 600 13px "JetBrains Mono", monospace; fill: var(--accent); }
+    .note { font: 400 12px Inter, system-ui, sans-serif; fill: var(--fg-dim); }
+    .badge{ font: 700 11px Inter, system-ui, sans-serif; fill: var(--on-accent); }
+    .cap  { font: 600 13px Inter, system-ui, sans-serif; fill: var(--accent-soft); }
+  </style>
+  <defs>
+    <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- pytanie -->
+  <rect x="270" y="14" width="360" height="42" rx="21" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="450" y="41" class="q" text-anchor="middle">Czego dotyczy ten fakt?</text>
+
+  <path d="M380 56 L190 92" stroke="var(--accent)" stroke-width="2" marker-end="url(#m)"/>
+  <path d="M450 56 L450 92" stroke="var(--accent)" stroke-width="2" marker-end="url(#m)"/>
+  <path d="M520 56 L710 92" stroke="var(--accent)" stroke-width="2" marker-end="url(#m)"/>
+
+  <!-- 1: globalna -->
+  <g class="tile">
+    <rect x="20" y="98" width="272" height="172" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="156" y="124" class="q" text-anchor="middle">Mnie i moich nawyków</text>
+    <text x="156" y="150" class="path" text-anchor="middle">~/.claude/MEMORY.md</text>
+    <text x="40" y="178" class="note">· ładowany w KAŻDEJ sesji</text>
+    <text x="40" y="198" class="note">· symlink do repo dotfiles</text>
+    <text x="40" y="218" class="note">· wspólny dla Claude, Codex,</text>
+    <text x="52" y="236" class="note">Copilota i Gemini</text>
+    <rect x="40" y="248" width="96" height="18" rx="9" fill="var(--accent)"/>
+    <text x="88" y="261" class="badge" text-anchor="middle">192 fakty</text>
+  </g>
+
+  <!-- 2: repo -->
+  <g class="tile">
+    <rect x="314" y="98" width="272" height="172" rx="10" fill="var(--surface)" stroke="var(--accent-soft)" stroke-width="1.5"/>
+    <text x="450" y="124" class="q" text-anchor="middle">Jednego repozytorium</text>
+    <text x="450" y="150" class="path" text-anchor="middle">&lt;repo&gt;/MEMORY.md</text>
+    <text x="334" y="178" class="note">· w gicie, widzi cały zespół</text>
+    <text x="334" y="198" class="note">· wchodzi do code review</text>
+    <text x="334" y="218" class="note">· podpięty przez @MEMORY.md</text>
+    <text x="346" y="236" class="note">w CLAUDE.md repo</text>
+    <rect x="334" y="248" width="104" height="18" rx="9" fill="var(--accent-soft)"/>
+    <text x="386" y="261" class="badge" text-anchor="middle">w repozytorium</text>
+  </g>
+
+  <!-- 3: sesja -->
+  <g class="tile">
+    <rect x="608" y="98" width="272" height="172" rx="10" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.5"/>
+    <text x="744" y="124" class="q" text-anchor="middle">Tej sesji i maszyny</text>
+    <text x="744" y="150" class="path" text-anchor="middle">projects/&lt;repo&gt;/memory/</text>
+    <text x="628" y="178" class="note">· pisze agent automatycznie</text>
+    <text x="628" y="198" class="note">· indeks + osobne pliki</text>
+    <text x="628" y="218" class="note">· poza gitem, tylko lokalnie</text>
+    <text x="628" y="236" class="note">· 15 projektów ma taki plik</text>
+    <rect x="628" y="248" width="82" height="18" rx="9" fill="var(--muted)"/>
+    <text x="669" y="261" class="badge" text-anchor="middle">prywatne</text>
+  </g>
+
+  <!-- memspec -->
+  <rect x="20" y="292" width="860" height="90" rx="10" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="44" y="318" class="cap">memspec dokłada do tego to, czego nie ma żadna z trzech warstw powyżej</text>
+  <text x="44" y="344" class="note">TTL i data ważności · kotwica do SHA pliku · cykl życia active → superseded → retired</text>
+  <text x="44" y="366" class="note">wyszukiwanie pełnotekstowe FTS5 · rozdział operator / agent · kwity użycia</text>
+</svg>

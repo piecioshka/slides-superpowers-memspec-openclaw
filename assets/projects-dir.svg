@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330" role="img" aria-label="Jak Claude Code wylicza katalog w projects i co w nim trzyma">
+  <style>
+    .code { font: 400 14px "JetBrains Mono", monospace; fill: var(--fg); }
+    .acc  { font: 700 14px "JetBrains Mono", monospace; fill: var(--accent); }
+    .note { font: 400 12px Inter, system-ui, sans-serif; fill: var(--fg-dim); }
+    .hl   { font: 600 13.5px Inter, system-ui, sans-serif; fill: var(--fg); }
+    .cap  { font: 600 12px Inter, system-ui, sans-serif; fill: var(--accent-soft); }
+  </style>
+  <defs>
+    <marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- transformacja sciezki -->
+  <text x="30" y="30" class="cap">Katalog wyliczany ze ścieżki projektu</text>
+
+  <rect x="30" y="44" width="840" height="40" rx="8" fill="var(--bg)" stroke="var(--line)"/>
+  <text x="48" y="70" class="code">/Users/dev/projects/acme-shop</text>
+
+  <path d="M450 84 L450 108" stroke="var(--accent)" stroke-width="2" marker-end="url(#p)"/>
+  <text x="470" y="102" class="note">każdy / zamieniony na -</text>
+
+  <rect x="30" y="116" width="840" height="40" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="48" y="142" class="code">~/.claude/projects/<tspan class="acc">-Users-dev-projects-acme-shop</tspan>/</text>
+
+  <!-- zawartosc -->
+  <text x="30" y="188" class="cap">Co jest w środku</text>
+
+  <rect x="30" y="200" width="272" height="106" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="50" y="226" class="hl">&lt;uuid&gt;.jsonl</text>
+  <text x="50" y="250" class="note">Pełny transkrypt sesji:</text>
+  <text x="50" y="268" class="note">wiadomości, wywołania narzędzi,</text>
+  <text x="50" y="286" class="note">wyniki. Linia na zdarzenie.</text>
+
+  <rect x="314" y="200" width="272" height="106" rx="10" fill="var(--surface)" stroke="var(--line)"/>
+  <text x="334" y="226" class="hl">sessions-index.json</text>
+  <text x="334" y="250" class="note">Indeks sesji.</text>
+  <text x="334" y="268" class="note">Nie w każdym projekcie.</text>
+
+  <rect x="598" y="200" width="272" height="106" rx="10" fill="var(--surface)" stroke="var(--accent-soft)" stroke-width="1.5"/>
+  <text x="618" y="226" class="hl">memory/</text>
+  <text x="618" y="250" class="note">Pamięć projektu: MEMORY.md</text>
+  <text x="618" y="268" class="note">jako indeks + osobny plik</text>
+  <text x="618" y="286" class="note">na każdą pamięć.</text>
+</svg>

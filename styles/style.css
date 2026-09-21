@@ -1,0 +1,640 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+:root {
+  --bg: #12141a;
+  --bg-alt: #1a1d26;
+  --fg: #e8eaf0;
+  --fg-dim: #9aa2b5;
+  --accent: #4d9fff;
+  --accent-soft: #8fc4ff;
+  --line: #2c3040;
+  --code-bg: #0d0f14;
+  --hl-line: rgba(77, 159, 255, 0.16);
+  --hl-span: rgba(77, 159, 255, 0.22);
+  --row-hover: rgba(77, 159, 255, 0.1);
+  /* Uzywane przez diagramy SVG wstrzykniete do DOM */
+  --surface: #1a1d26;
+  --muted: #6b7387;
+  --on-accent: #0a1e33;
+  color-scheme: dark;
+}
+
+/* Motyw jasny. Aktywny, gdy system tak ustawiony i nic nie wybrano recznie,
+   albo gdy wybrano go klawiszem (atrybut na <html>). */
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #ffffff;
+    --bg-alt: #f4f5f8;
+    --fg: #1b1e26;
+    --fg-dim: #5c6478;
+    --accent: #0a5bc4;
+    --accent-soft: #1e4f8a;
+    --line: #d3d7e0;
+    --code-bg: #f0f1f5;
+    --hl-line: rgba(10, 91, 196, 0.12);
+    --hl-span: rgba(10, 91, 196, 0.18);
+    --row-hover: rgba(10, 91, 196, 0.08);
+    --surface: #f4f5f8;
+    --muted: #8a92a6;
+    --on-accent: #ffffff;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-alt: #f4f5f8;
+  --fg: #1b1e26;
+  --fg-dim: #5c6478;
+  --accent: #0a5bc4;
+  --accent-soft: #1e4f8a;
+  --line: #d3d7e0;
+  --code-bg: #f0f1f5;
+  --hl-line: rgba(10, 91, 196, 0.12);
+  --hl-span: rgba(10, 91, 196, 0.18);
+  --row-hover: rgba(10, 91, 196, 0.08);
+  --surface: #f4f5f8;
+  --muted: #8a92a6;
+  --on-accent: #ffffff;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--fg);
+}
+
+/* remark wstrzykuje wlasny CSS: szare tlo kontenera i czarne w pelnym
+   ekranie. Oba ignoruja nasza palete, wiec je nadpisujemy. */
+
+.remark-container,
+body:fullscreen,
+body:-webkit-full-screen {
+  background: var(--bg);
+}
+
+.remark-slide-content {
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 20px;
+  line-height: 1.45;
+  padding: 1.15em 2em;
+}
+
+.remark-slide-content h1,
+.remark-slide-content h2,
+.remark-slide-content h3 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6em;
+}
+
+.remark-slide-content h1 {
+  font-size: 2.1em;
+}
+
+.remark-slide-content h2 {
+  font-size: 1.5em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0.3em;
+}
+
+.remark-slide-content h3 {
+  font-size: 1.15em;
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.remark-slide-content strong {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.remark-slide-content a {
+  color: var(--accent);
+}
+
+.remark-slide-content ul,
+.remark-slide-content ol {
+  padding-left: 1.2em;
+}
+
+.remark-slide-content li {
+  margin-bottom: 0.4em;
+}
+
+/* Kod */
+
+.remark-code,
+.remark-inline-code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.remark-inline-code {
+  background: var(--code-bg);
+  color: var(--accent-soft);
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.remark-slide-content pre {
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.9em 1.1em;
+  overflow-x: auto;
+}
+
+.remark-slide-content pre .remark-code {
+  font-size: 0.72em;
+  line-height: 1.45;
+}
+
+/* Podswietlenie linii kodu - domyslnie jaskrawo zolte */
+
+.remark-code-line-highlighted {
+  background: var(--hl-line);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* Kolory skladni daje motyw monokai; zdejmujemy tylko jego wlasne tlo,
+   zeby blok kodu trzymal sie palety slajdow */
+
+.hljs,
+.remark-code.hljs,
+pre code.hljs {
+  background: transparent;
+}
+
+/* Komentarze monokai (#75715e) maja na naszym tle kontrast 3.91 - za malo
+   dla drobnego tekstu, a na slajdach niosa tresc.
+   remark wstrzykuje swoj CSS PO tym pliku, wiec potrzebna wyzsza
+   specyficznosc niz gola klasa. */
+
+.remark-slide-content .hljs-comment,
+.remark-slide-content .hljs-quote {
+  color: #a39d86;
+}
+
+/* Monokai jest pisany pod ciemne tlo - w motywie jasnym jego kolory
+   (zolcie, roze) maja za maly kontrast. Nadpisujemy je ciemniejszymi. */
+
+.theme-light .remark-slide-content .hljs {
+  color: var(--fg);
+}
+
+.theme-light .remark-slide-content .hljs-comment,
+.theme-light .remark-slide-content .hljs-quote {
+  color: #5a6273;
+  font-style: italic;
+}
+
+.theme-light .remark-slide-content .hljs-keyword,
+.theme-light .remark-slide-content .hljs-selector-tag,
+.theme-light .remark-slide-content .hljs-literal,
+.theme-light .remark-slide-content .hljs-tag {
+  color: #0d5ca8;
+}
+
+.theme-light .remark-slide-content .hljs-string,
+.theme-light .remark-slide-content .hljs-attr,
+.theme-light .remark-slide-content .hljs-symbol,
+.theme-light .remark-slide-content .hljs-bullet {
+  color: #1d6b3a;
+}
+
+.theme-light .remark-slide-content .hljs-number,
+.theme-light .remark-slide-content .hljs-meta,
+.theme-light .remark-slide-content .hljs-built_in {
+  color: #1a4f7a;
+}
+
+.theme-light .remark-slide-content .hljs-title,
+.theme-light .remark-slide-content .hljs-section,
+.theme-light .remark-slide-content .hljs-name {
+  color: #7a2a8f;
+}
+
+.theme-light .remark-slide-content .hljs-attribute,
+.theme-light .remark-slide-content .hljs-variable,
+.theme-light .remark-slide-content .hljs-template-variable,
+.theme-light .remark-slide-content .hljs-type {
+  color: #1e4f8a;
+}
+
+/* `kod w backtickach` wewnatrz bloku - monokai daje cyjan o kontrascie 1.46 */
+
+.theme-light .remark-slide-content .hljs-code,
+.theme-light .remark-slide-content .hljs-emphasis,
+.theme-light .remark-slide-content .hljs-strong {
+  color: #0f4c81;
+  font-style: normal;
+}
+
+/* highlightSpans: `tekst` w bloku kodu */
+
+.remark-code-span-highlighted {
+  background: var(--hl-span);
+  border-radius: 3px;
+  padding: 0.05em 0.25em;
+}
+
+/* Tabele */
+
+.remark-slide-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.6em 0;
+  font-size: 0.82em;
+}
+
+.remark-slide-content th {
+  background: var(--bg-alt);
+  color: var(--accent-soft);
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5em 0.7em;
+  border-bottom: 2px solid var(--line);
+}
+
+.remark-slide-content td {
+  padding: 0.45em 0.7em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.remark-slide-content tr:last-child td {
+  border-bottom: none;
+}
+
+/* Wiersz pod kursorem - pomaga sledzic dlugie tabele porownawcze */
+
+.remark-slide-content tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+.remark-slide-content tbody tr:hover {
+  background: var(--row-hover);
+}
+
+.big-table table {
+  font-size: 0.74em;
+}
+
+/* Graficzne oznaczenie miejsc do pokazania w terminalu */
+
+.terminal-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  margin: 0.9em 0 0.8em;
+  padding: 0.42em 0.8em 0.44em 0.7em;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(77, 159, 255, 0.12),
+    rgba(77, 159, 255, 0.02)
+  );
+  color: var(--accent-soft);
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.terminal-demo code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.terminal-demo::before {
+  content: "$";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9em;
+  font-weight: 800;
+}
+
+/* Znacznik "ma te funkcje" w tabeli porownawczej */
+
+.y {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Tabela feature'ow siega nisko - miejsce na numer slajdu */
+
+.big-table {
+  display: block;
+  padding-bottom: 0.8em;
+}
+
+/*
+ * Tabela zageszczona - dla zestawien na kilkanascie wierszy, ktore przy
+ * normalnym paddingu komorek nie mieszcza sie w kadrze slajdu.
+ */
+
+.dense-table table {
+  font-size: 0.58em;
+}
+
+.dense-table td,
+.dense-table th {
+  padding: 0.16em 0.42em;
+}
+
+/*
+ * Slajd zageszczony w pionie - dla stron z listingiem i kilkoma akapitami,
+ * ktore przekraczaja kadr o kilkanascie do kilkudziesieciu pikseli.
+ * Sciaga odstepy miedzy blokami, nie ruszajac stopnia pisma.
+ */
+
+.remark-slide-content.tight p {
+  margin: 0.45em 0;
+}
+
+.remark-slide-content.tight pre {
+  margin: 0.5em 0;
+}
+
+.remark-slide-content.tight pre .remark-code {
+  font-size: 0.66em;
+  line-height: 1.3;
+}
+
+.remark-slide-content.tight li {
+  margin-bottom: 0.2em;
+}
+
+.remark-slide-content.tight h2 {
+  margin-bottom: 0.4em;
+}
+
+/* Wariant mocniejszy - gdy na slajdzie sa dwa listingi naraz. */
+
+.remark-slide-content.tighter pre .remark-code {
+  font-size: 0.62em;
+}
+
+.remark-slide-content.tighter pre {
+  padding: 0.6em 1.1em;
+}
+
+/* Diagramy SVG */
+
+.diagram {
+  display: block;
+  text-align: center;
+  margin: 0.5em 0 0.7em;
+}
+
+.diagram img,
+.diagram svg {
+  max-width: 100%;
+  max-height: 60vh;
+  height: auto;
+}
+
+/* Kafelki w diagramach reaguja na kursor. Dziala tylko dla SVG wstrzyknietego
+   do DOM - w <img> dokument jest odizolowany i :hover go nie dosiega. */
+
+.diagram svg .tile {
+  transition:
+    opacity 0.12s ease,
+    filter 0.12s ease;
+}
+
+.diagram svg:hover .tile {
+  opacity: 0.45;
+}
+
+.diagram svg .tile:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+/* Dwie kolumny */
+
+.cols {
+  display: flex;
+  gap: 2.2em;
+}
+
+.cols .col {
+  flex: 1;
+  min-width: 0;
+}
+
+.cols .col ul {
+  margin-top: 0.3em;
+}
+
+/*
+ * Zageszczona lista - dla slajdow z dlugimi wyliczeniami, ktore inaczej
+ * nie mieszcza sie w kadrze. Zdejmuje odstepy miedzy pozycjami i skraca
+ * marginesy naglowkow sekcji w kolumnach.
+ */
+
+.dense li {
+  margin-bottom: 0.05em;
+  line-height: 1.35;
+}
+
+.dense p {
+  margin: 0.5em 0 0.2em;
+}
+
+.dense ul {
+  margin-top: 0.15em;
+  margin-bottom: 0;
+}
+
+/* Slajdy tytulowe i sekcyjne */
+
+.title {
+  background: linear-gradient(140deg, var(--bg-alt) 0%, var(--bg) 100%);
+}
+
+.title h1 {
+  color: var(--accent);
+}
+
+.title h3 {
+  color: var(--fg-dim);
+  font-weight: 400;
+}
+
+/* Lista zrodel na slajdzie koncowym - slajd jest wysrodkowany,
+   ale sama lista czyta sie lepiej wyrownana w lewo. */
+
+.sources {
+  display: inline-block;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.sources ul {
+  margin: 0.4em 0 0;
+  padding-left: 1.1em;
+  list-style: none;
+}
+
+.sources li {
+  margin-bottom: 0.35em;
+}
+
+.sources li::before {
+  content: "·";
+  color: var(--accent);
+  margin-right: 0.6em;
+  margin-left: -1.1em;
+}
+
+/* Callout - notka o pochodzeniu danych, odsunieta od tresci slajdu */
+
+.callout {
+  display: inline-block;
+  margin-top: 1.6em;
+  padding: 0.6em 1.1em;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  background: var(--bg-alt);
+  color: var(--fg-dim);
+  font-size: 0.62em;
+  text-align: left;
+}
+
+.section {
+  background: var(--bg-alt);
+}
+
+/* Adresy projektu na slajdzie otwierajacym sekcje - male, pod tytulem */
+
+.section .links {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 0.55em 1.2em;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 0.6em;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.section .links code,
+.section .links .remark-inline-code {
+  background: none;
+  padding: 0;
+  color: var(--fg-dim);
+}
+
+.section h1 {
+  color: var(--fg-dim);
+  font-size: 1.3em;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+}
+
+.section h2 {
+  color: var(--accent);
+  font-size: 2.6em;
+  border: none;
+  padding: 0;
+}
+
+/* Numeracja */
+
+.remark-slide-number {
+  color: var(--fg-dim);
+  opacity: 0.45;
+  font-size: 0.6em;
+  bottom: 12px;
+  right: 18px;
+}
+
+.title .remark-slide-number,
+.section .remark-slide-number {
+  display: none;
+}
+
+/* Blad wczytywania */
+
+.load-error {
+  max-width: 34em;
+  margin: 18vh auto;
+  padding: 0 1.5em;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.load-error h1 {
+  color: var(--accent);
+}
+
+.load-error pre {
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.8em 1em;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Podkreslenie tresci - remark renderuje .u[tekst] jako <span class="u"> */
+
+.u {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+/*
+ * Widok prezentera: remark daje panelowi notatek biezacego slajdu
+ * overflow: hidden, wiec dluzsze notatki urywaja sie w polowie zdania
+ * bez zadnego sygnalu. Wlaczamy przewijanie w obu panelach.
+ */
+
+.remark-notes-area .remark-notes,
+.remark-notes-area .remark-notes-preview {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.remark-notes-area .remark-notes {
+  scrollbar-width: thin;
+}
+
+/*
+ * Eksport do PDF (`npm run pdf`, a takze Cmd+P).
+ *
+ * @page jest POZA `@media print` celowo: DeckTape wymusza tryb `screen`
+ * (emulateMediaType), wiec blok `@media print` by go nie dotyczyl, a bez
+ * rozmiaru arkusza Chromium bierze format domyslny i skaluje slajd - tresc
+ * przy prawej krawedzi wypada wtedy poza kadr.
+ */
+
+@page {
+  /* 1210x681 to rozmiar, jaki remark nadaje slajdowi przy `ratio: "16:9"`
+     (wysokosc 681 to jego stala, szerokosc wynika z proporcji). Po zmianie
+     `ratio` w scripts/app.js trzeba poprawic te wartosci - inaczej slajdy
+     wydrukuja sie w zlej skali. */
+  size: 1210px 681px;
+  margin: 0;
+}

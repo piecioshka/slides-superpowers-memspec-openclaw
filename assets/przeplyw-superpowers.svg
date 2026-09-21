@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="Przeplyw pracy Superpowers od brainstormingu do code review">
+  <style>
+    .step { font: 600 13px "JetBrains Mono", monospace; fill: var(--fg); }
+    .note { font: 400 12px Inter, system-ui, sans-serif; fill: var(--fg-dim); }
+    .gate { font: 700 12px Inter, system-ui, sans-serif; fill: var(--accent-soft); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- wejscie -->
+  <rect x="20" y="122" width="118" height="46" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+  <text x="79" y="143" class="step" text-anchor="middle">"zbudujmy X"</text>
+  <text x="79" y="160" class="note" text-anchor="middle">prompt</text>
+  <path d="M138 145 L172 145" stroke="var(--accent)" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 1 -->
+  <rect x="176" y="112" width="132" height="66" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="242" y="138" class="step" text-anchor="middle">brainstorming</text>
+  <text x="242" y="158" class="note" text-anchor="middle">pytania, aż</text>
+  <text x="242" y="172" class="note" text-anchor="middle">intencja jasna</text>
+  <path d="M308 145 L342 145" stroke="var(--accent)" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 2 -->
+  <rect x="346" y="112" width="132" height="66" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="412" y="138" class="step" text-anchor="middle">writing-plans</text>
+  <text x="412" y="158" class="note" text-anchor="middle">plan w pliku,</text>
+  <text x="412" y="172" class="note" text-anchor="middle">podzielony na zadania</text>
+  <path d="M478 145 L512 145" stroke="var(--accent)" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 3 -->
+  <rect x="516" y="112" width="132" height="66" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="582" y="138" class="step" text-anchor="middle">TDD</text>
+  <text x="582" y="158" class="note" text-anchor="middle">red → green</text>
+  <text x="582" y="172" class="note" text-anchor="middle">→ refactor</text>
+  <path d="M648 145 L682 145" stroke="var(--accent)" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 4 -->
+  <rect x="686" y="112" width="132" height="66" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="752" y="138" class="step" text-anchor="middle">verification</text>
+  <text x="752" y="158" class="note" text-anchor="middle">dowód przed</text>
+  <text x="752" y="172" class="note" text-anchor="middle">słowem "gotowe"</text>
+
+  <!-- bramki -->
+  <text x="242" y="86" class="gate" text-anchor="middle">bez tego</text>
+  <text x="242" y="102" class="gate" text-anchor="middle">nie ma planu</text>
+  <text x="412" y="86" class="gate" text-anchor="middle">bez tego</text>
+  <text x="412" y="102" class="gate" text-anchor="middle">nie ma kodu</text>
+  <text x="752" y="86" class="gate" text-anchor="middle">bez tego</text>
+  <text x="752" y="102" class="gate" text-anchor="middle">nie ma commita</text>
+
+  <!-- podpis -->
+  <rect x="176" y="210" width="642" height="40" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+  <text x="497" y="235" class="note" text-anchor="middle">Skille narzucają kolejność - agent nie zaczyna kodować, zanim nie ma planu</text>
+</svg>
