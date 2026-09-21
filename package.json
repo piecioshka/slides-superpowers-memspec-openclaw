@@ -1,6 +1,6 @@
 {
   "name": "slides-superpowers-memspec-openclaw",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Slajdy o Superpowers, memspec i OpenClaw",
   "private": true,
   "scripts": {
