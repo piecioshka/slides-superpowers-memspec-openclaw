@@ -19,8 +19,8 @@
   color-scheme: dark;
 }
 
-/* Motyw jasny. Aktywny, gdy system tak ustawiony i nic nie wybrano recznie,
-   albo gdy wybrano go klawiszem (atrybut na <html>). */
+/* Motyw jasny. Atrybut `data-theme` na <html> ustawia vendor/remark-theme.js
+   (system albo wybor klawiszem `d`). Blok @media to zapas, gdy JS nie dziala. */
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
@@ -185,54 +185,54 @@ pre code.hljs {
 /* Monokai jest pisany pod ciemne tlo - w motywie jasnym jego kolory
    (zolcie, roze) maja za maly kontrast. Nadpisujemy je ciemniejszymi. */
 
-.theme-light .remark-slide-content .hljs {
+:root[data-theme="light"] .remark-slide-content .hljs {
   color: var(--fg);
 }
 
-.theme-light .remark-slide-content .hljs-comment,
-.theme-light .remark-slide-content .hljs-quote {
+:root[data-theme="light"] .remark-slide-content .hljs-comment,
+:root[data-theme="light"] .remark-slide-content .hljs-quote {
   color: #5a6273;
   font-style: italic;
 }
 
-.theme-light .remark-slide-content .hljs-keyword,
-.theme-light .remark-slide-content .hljs-selector-tag,
-.theme-light .remark-slide-content .hljs-literal,
-.theme-light .remark-slide-content .hljs-tag {
+:root[data-theme="light"] .remark-slide-content .hljs-keyword,
+:root[data-theme="light"] .remark-slide-content .hljs-selector-tag,
+:root[data-theme="light"] .remark-slide-content .hljs-literal,
+:root[data-theme="light"] .remark-slide-content .hljs-tag {
   color: #0d5ca8;
 }
 
-.theme-light .remark-slide-content .hljs-string,
-.theme-light .remark-slide-content .hljs-attr,
-.theme-light .remark-slide-content .hljs-symbol,
-.theme-light .remark-slide-content .hljs-bullet {
+:root[data-theme="light"] .remark-slide-content .hljs-string,
+:root[data-theme="light"] .remark-slide-content .hljs-attr,
+:root[data-theme="light"] .remark-slide-content .hljs-symbol,
+:root[data-theme="light"] .remark-slide-content .hljs-bullet {
   color: #1d6b3a;
 }
 
-.theme-light .remark-slide-content .hljs-number,
-.theme-light .remark-slide-content .hljs-meta,
-.theme-light .remark-slide-content .hljs-built_in {
+:root[data-theme="light"] .remark-slide-content .hljs-number,
+:root[data-theme="light"] .remark-slide-content .hljs-meta,
+:root[data-theme="light"] .remark-slide-content .hljs-built_in {
   color: #1a4f7a;
 }
 
-.theme-light .remark-slide-content .hljs-title,
-.theme-light .remark-slide-content .hljs-section,
-.theme-light .remark-slide-content .hljs-name {
+:root[data-theme="light"] .remark-slide-content .hljs-title,
+:root[data-theme="light"] .remark-slide-content .hljs-section,
+:root[data-theme="light"] .remark-slide-content .hljs-name {
   color: #7a2a8f;
 }
 
-.theme-light .remark-slide-content .hljs-attribute,
-.theme-light .remark-slide-content .hljs-variable,
-.theme-light .remark-slide-content .hljs-template-variable,
-.theme-light .remark-slide-content .hljs-type {
+:root[data-theme="light"] .remark-slide-content .hljs-attribute,
+:root[data-theme="light"] .remark-slide-content .hljs-variable,
+:root[data-theme="light"] .remark-slide-content .hljs-template-variable,
+:root[data-theme="light"] .remark-slide-content .hljs-type {
   color: #1e4f8a;
 }
 
 /* `kod w backtickach` wewnatrz bloku - monokai daje cyjan o kontrascie 1.46 */
 
-.theme-light .remark-slide-content .hljs-code,
-.theme-light .remark-slide-content .hljs-emphasis,
-.theme-light .remark-slide-content .hljs-strong {
+:root[data-theme="light"] .remark-slide-content .hljs-code,
+:root[data-theme="light"] .remark-slide-content .hljs-emphasis,
+:root[data-theme="light"] .remark-slide-content .hljs-strong {
   color: #0f4c81;
   font-style: normal;
 }

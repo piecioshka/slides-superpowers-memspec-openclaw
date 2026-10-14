@@ -35,7 +35,7 @@ Otwórz `http://localhost:4321`.
 | -------------- | -------------------- |
 | `→` / `spacja` | następny slajd       |
 | `←`            | poprzedni slajd      |
-| `t`            | motyw jasny / ciemny |
+| `d`            | motyw jasny / ciemny |
 | `p`            | widok prezentera     |
 | `c`            | sklonuj okno         |
 | `f`            | pełny ekran          |
@@ -63,19 +63,20 @@ Wtyczka remarka rozpoznaje deck po globalnej zmiennej `slideshow` - dlatego `scr
 
 ## Motywy 🌓
 
-Start według ustawienia systemu. Klawisz `t` przełącza ręcznie, a wybór zapisuje się w `localStorage` i wygrywa z systemem do czasu wyczyszczenia magazynu przeglądarki.
+Start według ustawienia systemu. Klawisz `d` przełącza ręcznie, a wybór zapisuje się w `localStorage` i wygrywa z systemem do czasu wyczyszczenia magazynu przeglądarki. Mechanizm to plugin [remarkjs-theme](https://github.com/piecioshka/remarkjs-theme) (`vendor/remark-theme.js`), który ustawia `data-theme` na `<html>`; palety są w `styles/style.css`. Klawisz `t` jest zajęty przez remarka (reset zegara w widoku prezentera).
 
 ## Struktura 📁
 
-| Plik                   | Rola                                 |
-| ---------------------- | ------------------------------------ |
-| `slides.md`            | treść prezentacji                    |
-| `assets/*.svg`         | diagramy                             |
-| `index.html`           | szkielet strony                      |
-| `scripts/app.js`       | remark, motyw, SVG, linki zewnętrzne |
-| `styles/style.css`     | obie palety i klasy pomocnicze       |
-| `favicon.svg`          | ikona karty                          |
-| `vendor/remark.min.js` | remark.js lokalnie, bez CDN          |
+| Plik                     | Rola                                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `slides.md`              | treść prezentacji                                                                                                |
+| `assets/*.svg`           | diagramy                                                                                                         |
+| `index.html`             | szkielet strony                                                                                                  |
+| `scripts/app.js`         | remark, SVG, linki zewnętrzne                                                                                    |
+| `vendor/remark-theme.js` | plugin [remarkjs-theme](https://github.com/piecioshka/remarkjs-theme) v0.1.0: motyw jasny / ciemny (klawisz `d`) |
+| `styles/style.css`       | obie palety i klasy pomocnicze                                                                                   |
+| `favicon.svg`            | ikona karty                                                                                                      |
+| `vendor/remark.min.js`   | remark.js lokalnie, bez CDN                                                                                      |
 
 Treść edytuje się wyłącznie w `slides.md`. Separator slajdów to `---`. Wygenerowane PDF-y są w `.gitignore`.
 

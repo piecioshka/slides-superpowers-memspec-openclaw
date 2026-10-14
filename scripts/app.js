@@ -1,25 +1,8 @@
-const STORAGE_KEY = "deck-theme";
-const root = document.documentElement;
-
-/** Zwraca motyw zapisany przez uzytkownika albo null, gdy nic nie wybral. */
-function storedTheme() {
-  try {
-    const value = localStorage.getItem(STORAGE_KEY);
-    return value === "light" || value === "dark" ? value : null;
-  } catch {
-    return null;
-  }
-}
-
-function systemTheme() {
-  return window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
-}
-
-function activeTheme() {
-  return storedTheme() ?? systemTheme();
-}
+// Motyw jasny / ciemny: start wedlug systemu, klawisz `d` przelacza, wybor
+// zostaje w localStorage. Plugin ustawia `data-theme` na <html> od razu, przed
+// pierwszym malowaniem, dlatego wolamy go przed remark.create().
+// Zrodlo: https://github.com/piecioshka/remarkjs-theme
+window.theme = remarkTheme({ storageKey: "deck-theme" });
 
 /**
  * SVG osadzony przez <img> jest odizolowany: nie widzi zmiennych CSS strony
@@ -79,14 +62,6 @@ function markExternalLinks() {
   });
 }
 
-function applyTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  root.classList.toggle("theme-light", theme === "light");
-}
-
-// Motyw ustawiamy przed pierwszym malowaniem, zeby nie mignelo ciemne tlo.
-applyTheme(activeTheme());
-
 // Instancja siedzi w globalnym `slideshow` z dwoch powodow: daje dostep do API
 // prezentacji z konsoli (`slideshow.getSlideCount()`), a DeckTape wlasnie po tej
 // zmiennej rozpoznaje deck remarka przy `npm run pdf`.
@@ -124,24 +99,3 @@ new MutationObserver(onSlidesRendered).observe(document.body, {
   subtree: true,
 });
 onSlidesRendered();
-
-// `t` przelacza motyw i zapamietuje wybor.
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "t" && event.key !== "T") return;
-  if (event.metaKey || event.ctrlKey || event.altKey) return;
-
-  const nextTheme = activeTheme() === "light" ? "dark" : "light";
-  try {
-    localStorage.setItem(STORAGE_KEY, nextTheme);
-  } catch {
-    // tryb prywatny - motyw zadziala do konca sesji
-  }
-  applyTheme(nextTheme);
-});
-
-// Dopoki uzytkownik nie wybral nic recznie, nadazamy za ustawieniem systemu.
-window
-  .matchMedia("(prefers-color-scheme: light)")
-  .addEventListener("change", () => {
-    if (!storedTheme()) applyTheme(systemTheme());
-  });
