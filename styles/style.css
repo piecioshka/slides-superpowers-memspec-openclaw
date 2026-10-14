@@ -622,6 +622,41 @@ pre code.hljs {
 }
 
 /*
+ * remark maluje panel notatek na sztywno na bialo. Bierzemy kolory z tokenow,
+ * zeby panel szedl za motywem (klawisz `d`) tak jak slajdy.
+ */
+
+.remark-notes-area {
+  background: var(--bg-alt);
+  color: var(--fg);
+}
+
+.remark-notes-area .remark-notes,
+.remark-notes-area .remark-notes-preview {
+  border-top-color: var(--line);
+}
+
+.remark-notes-area .remark-toggle {
+  color: var(--fg-dim);
+}
+
+.remark-notes-area .remark-toolbar-link {
+  border-color: var(--line);
+  color: var(--fg-dim);
+}
+
+.remark-notes-area .remark-toolbar-link:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.remark-notes-area .remark-toolbar-timer {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/*
  * Eksport do PDF (`npm run pdf`, a takze Cmd+P).
  *
  * @page jest POZA `@media print` celowo: DeckTape wymusza tryb `screen`
